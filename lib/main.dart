@@ -3,7 +3,36 @@ import 'package:flutter/material.dart';
 void main(){
   runApp(MaterialApp(
     title: "App Test",
-    home: Stack(
+    home: Home()
+  ));
+}
+
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  int _count = 0;
+  String _infoText = "Can count!";
+
+  void _updateCount(int number){
+    setState(() {
+      _count += number;
+
+      if(_count < 0) {
+        _infoText = "It's bad :/";
+      } else if(_count <= 10) {
+        _infoText = "Can count!";
+      } else {
+        _infoText = "It's very high!";
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
       children: <Widget>[
         Image.asset(
           "images/wallpaper.jpg",
@@ -15,7 +44,7 @@ void main(){
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              "Count: 0",
+              "Count: $_count",
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold
@@ -34,7 +63,9 @@ void main(){
                             color: Colors.white
                         )
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      _updateCount(1);
+                    },
                   ),
                 ),
                 Padding(
@@ -47,13 +78,15 @@ void main(){
                             color: Colors.white
                         )
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      _updateCount(-1);
+                    },
                   ),
                 ),
               ],
             ),
             Text(
-              "Can count!",
+              _infoText,
               style: TextStyle(
                   color: Colors.white,
                   fontStyle: FontStyle.italic,
@@ -63,6 +96,6 @@ void main(){
           ],
         )
       ],
-    )
-  ));
+    );
+  }
 }
