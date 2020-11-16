@@ -3,48 +3,64 @@ import 'package:flutter/material.dart';
 void main(){
   runApp(MaterialApp(
     title: "App Test",
-    home: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+    home: Stack(
       children: <Widget>[
-        Text(
-          "Count: 0",
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold
-          ),
+        Image.asset(
+          "images/wallpaper.jpg",
+          fit: BoxFit.cover,
+          height: 1000,
+          width: 1000,
         ),
-        Row(
+        Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            FlatButton(
-              child: Text(
-                  "+1",
-                  style: TextStyle(
-                      fontSize: 40,
-                      color: Colors.white
-                  )
+            Text(
+              "Count: 0",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold
               ),
-              onPressed: () {},
             ),
-            FlatButton(
-              child: Text(
-                  "-1",
-                  style: TextStyle(
-                      fontSize: 40,
-                      color: Colors.white
-                  )
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: FlatButton(
+                    child: Text(
+                        "+1",
+                        style: TextStyle(
+                            fontSize: 40,
+                            color: Colors.white
+                        )
+                    ),
+                    onPressed: () {},
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(10),
+                  child: FlatButton(
+                    child: Text(
+                        "-1",
+                        style: TextStyle(
+                            fontSize: 40,
+                            color: Colors.white
+                        )
+                    ),
+                    onPressed: () {},
+                  ),
+                ),
+              ],
+            ),
+            Text(
+              "Can count!",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 30
               ),
-              onPressed: () {},
             )
           ],
-        ),
-        Text(
-          "Can count!",
-          style: TextStyle(
-            color: Colors.white,
-            fontStyle: FontStyle.italic,
-            fontSize: 30
-          ),
         )
       ],
     )
